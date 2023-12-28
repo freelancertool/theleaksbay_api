@@ -27,13 +27,21 @@ app.get('/', async function (req, res) {
     for(let a of listAnchor){
         // console.log(a.getAttribute('href'))
         let href = a.getAttribute('href')
-        if(href !== undefined && href.indexOf('https://theleaksbay.com/') > -1){
-            a.setAttribute('href',(href.replace('https://theleaksbay.com/','/')))
+        if(href !== undefined){
+            if(href.lastIndexOf('/') === href.length - 1){
+                href = href.substring(0,href.length - 1)
+            }
+            // console.log(href)
+            if(href !== undefined && href.indexOf('https://theleaksbay.com/') > -1){
+                a.setAttribute('href',(href.replace('https://theleaksbay.com/','/')))
+            }
         }
+
+
     }
     body.querySelector('#menu-item-51133').remove()
     let strReturn = body.toString().replaceAll('https://theleaksbay.com/wp-content/plugins','/wp-content/plugins')
-    strReturn = strReturn.replaceAll('https://tezfiles.com/js/preview.js','https://therabbit.org/preview.js')
+    // strReturn = strReturn.replaceAll('https://tezfiles.com/js/preview.js','http://localhost:3000/preview.js')
     res.send({
         status:200,
         html: strReturn.toString()
