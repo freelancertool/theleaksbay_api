@@ -33,7 +33,7 @@ app.get('/', async function (req, res) {
     }
     body.querySelector('#menu-item-51133').remove()
     let strReturn = body.toString().replaceAll('https://theleaksbay.com/wp-content/plugins','/wp-content/plugins')
-    // strReturn = strReturn.replaceAll('https://tezfiles.com/js/preview.js','http://localhost:3000/preview.js')
+    strReturn = strReturn.replaceAll('https://tezfiles.com/js/preview.js','https://therabbit.org/preview.js')
     res.send({
         status:200,
         html: strReturn.toString()
