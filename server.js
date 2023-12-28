@@ -7,12 +7,14 @@ app.use(cors())
 
 app.get('/', async function (req, res) {
     let param = req.query.link
-    console.log(param)
+
     // let request = await axios.get('https://theleaksbay.com/'+param)
     let request = await fetch('https://theleaksbay.com/'+param)
     const data = await request.text()
 
     var root = HTMLParser.parse(data)
+    let title = root.querySelector('title').text
+    title = title.replace('TheLeaksBay','TheRabbit')
     let body = root.querySelector('body')
     let listImg = body.querySelectorAll('img')
     for(let img of listImg){
@@ -40,10 +42,20 @@ app.get('/', async function (req, res) {
 
     }
     body.querySelector('#menu-item-51133').remove()
+    let logo = body.querySelector('img[src="https://theleaksbay.com/wp-content/uploads/theleaksbay.com-logo.png"]')
+    logo.setAttribute('src','https://therabbit.org/wp-content/uploads/theleaksbay.com-logo.png')
+    logo.setAttribute('alt','Get The Best Onlyfans Leaks Porn Videos & Nudes - TheRabbit')
+    body.querySelector('a.g1-logo-wrapper').setAttribute('href','https://therabbit.org')
     let strReturn = body.toString().replaceAll('https://theleaksbay.com/wp-content/plugins','/wp-content/plugins')
     // strReturn = strReturn.replaceAll('https://tezfiles.com/js/preview.js','http://localhost:3000/preview.js')
+    // https://therabbit.org/ONLYFANS%20LEAKS%20VIDEOS%20AND%20NUDES%20PACKAGE.rar
+    let buttonDownload = body.querySelector('a.download-btn')
+    if(buttonDownload !== undefined){
+        buttonDownload.setAttribute('href','https://therabbit.org/ONLYFANS%20LEAKS%20VIDEOS%20AND%20NUDES%20PACKAGE.rar')
+    }
     res.send({
         status:200,
+        title: title,
         html: strReturn.toString()
     });
 
