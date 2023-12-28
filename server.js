@@ -46,14 +46,13 @@ app.get('/', async function (req, res) {
     logo.setAttribute('src','https://therabbit.org/wp-content/uploads/theleaksbay.com-logo.png')
     logo.setAttribute('alt','Get The Best Onlyfans Leaks Porn Videos & Nudes - TheRabbit')
     body.querySelector('a.g1-logo-wrapper').setAttribute('href','https://therabbit.org')
-     let buttonDownload = body.querySelector('a.download-btn')
-    if(buttonDownload !== undefined){
-        buttonDownload.setAttribute('href','https://therabbit.org/ONLYFANS%20LEAKS%20VIDEOS%20AND%20NUDES%20PACKAGE.rar')
-    }
     let strReturn = body.toString().replaceAll('https://theleaksbay.com/wp-content/plugins','/wp-content/plugins')
     // strReturn = strReturn.replaceAll('https://tezfiles.com/js/preview.js','http://localhost:3000/preview.js')
     // https://therabbit.org/ONLYFANS%20LEAKS%20VIDEOS%20AND%20NUDES%20PACKAGE.rar
-   
+    let buttonDownload = body.querySelector('a.download-btn')
+    // if(buttonDownload !== undefined){
+    //     buttonDownload.setAttribute('href','https://therabbit.org/ONLYFANS%20LEAKS%20VIDEOS%20AND%20NUDES%20PACKAGE.rar')
+    // }
     res.send({
         status:200,
         title: title,
