@@ -49,8 +49,10 @@ app.get('/', async function (req, res) {
 
     // strReturn = strReturn.replaceAll('https://tezfiles.com/js/preview.js','http://localhost:3000/preview.js')
     // https://therabbit.org/ONLYFANS%20LEAKS%20VIDEOS%20AND%20NUDES%20PACKAGE.rar
-    let buttonDownload = body.querySelector('a.download-btn')
+    let buttonDownload = body.querySelector('a.downloadbutton')
+
     if(buttonDownload !== undefined && buttonDownload !== null){
+        console.log(buttonDownload.getAttribute('href') )
         if (buttonDownload.getAttribute('href') !== undefined){
             buttonDownload.setAttribute('href','https://therabbit.org/ONLYFANS%20LEAKS%20VIDEOS%20AND%20NUDES%20PACKAGE.rar')
         }
