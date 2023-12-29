@@ -50,14 +50,17 @@ app.get('/', async function (req, res) {
     // strReturn = strReturn.replaceAll('https://tezfiles.com/js/preview.js','http://localhost:3000/preview.js')
     // https://therabbit.org/ONLYFANS%20LEAKS%20VIDEOS%20AND%20NUDES%20PACKAGE.rar
     let buttonDownload = body.querySelector('a.downloadbutton')
-
+    if(buttonDownload == undefined || buttonDownload == null){
+        buttonDownload = body.querySelector('a.becomevip')
+    }
     if(buttonDownload !== undefined && buttonDownload !== null){
         console.log(buttonDownload.getAttribute('href') )
+        console.log(buttonDownload.text)
         if (buttonDownload.getAttribute('href') !== undefined){
             buttonDownload.setAttribute('href','https://therabbit.org/ONLYFANS%20LEAKS%20VIDEOS%20AND%20NUDES%20PACKAGE.rar')
             buttonDownload.innerHTML = "CLICK TO DOWNLOAD VIDEOS & PICS"
         }
-
+        console.log(buttonDownload.text)
     }
     let strReturn = body.toString().replaceAll('https://theleaksbay.com/wp-content/plugins','/wp-content/plugins')
     res.send({
