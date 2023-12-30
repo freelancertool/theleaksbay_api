@@ -16,6 +16,24 @@ app.get('/', async function (req, res) {
     let title = root.querySelector('title').text
     title = title.replace('TheLeaksBay','TheRabbit')
     let body = root.querySelector('body')
+
+    if(param == null || param == ''){
+        let listP = body.querySelectorAll('.elementor-widget-container p')
+        for(let p of listP){
+            console.log(p.innerHTML)
+            console.log(p.innerHTML.toString().indexOf('Welcome to TheLeaksBay.com, probably the safest and best place to find if you are looking for'))
+            if(p.innerHTML.toString().indexOf('Welcome to TheLeaksBay.com, probably the safest and best place to find if you are looking for') > -1){
+                p.innerHTML = "Because the number of visitors is too large, my server cannot handle streaming. Onlyfan idols will have a button to download the FULL VIDEO version to their computer to watch. Have fun bro"
+                console.log(p.innerText)
+            }else if(p.innerHTML.toString().indexOf('Tired of viewing reddit leaks? Endless Telegram spam group or') > -1){
+                p.remove()
+            }else if(p.innerHTML.toString().indexOf('That is the reason why a group of buddies from Discord started') > -1){
+                p.remove()
+            }else if(p.innerHTML.toString().indexOf('Our website is not named TheLeaksBay for nothing! We share only ') > -1){
+                p.remove()
+            }
+        }
+    }
     let listImg = body.querySelectorAll('img')
     for(let img of listImg){
         let src = img.getAttribute('src')
