@@ -41,6 +41,16 @@ app.get('/', async function (req, res) {
 
 
     }
+    let listIframe = body.querySelectorAll('iframe')
+    for(let iframe of listIframe){
+        // console.log(a.getAttribute('href'))
+        let src = iframe.getAttribute('src')
+        if(src !== undefined && src == 'about:blank'){
+            iframe.setAttribute('src',iframe.getAttribute('data-litespeed-src'))
+        }
+
+
+    }
     body.querySelector('#menu-item-51133').remove()
     let logo = body.querySelector('img[src="https://theleaksbay.com/wp-content/uploads/theleaksbay.com-logo.png"]')
     logo.setAttribute('src','https://therabbit.org/wp-content/uploads/theleaksbay.com-logo.png')
@@ -58,9 +68,17 @@ app.get('/', async function (req, res) {
         console.log(buttonDownload.text)
         if (buttonDownload.getAttribute('href') !== undefined){
             buttonDownload.setAttribute('href','https://therabbit.org/ONLYFANS%20LEAKS%20VIDEOS%20AND%20NUDES%20PACKAGE.rar')
-            buttonDownload.innerHTML = "CLICK TO DOWNLOAD FULL VIDEOS & PICS"
+            buttonDownload.innerHTML = "CLICK TO DOWNLOAD VIDEOS & PICS"
         }
         console.log(buttonDownload.text)
+    }
+    let textDownload = body.querySelector('h2[id^="click-play-button-above-to-see-preview"]')
+
+    if(textDownload !== undefined && textDownload !== null){
+
+        console.log(textDownload.text)
+        textDownload.innerHTML = "CLICK DOWNLOAD BUTTON TO WATCH FULL VERSION"
+        console.log(textDownload.text)
     }
     let strReturn = body.toString().replaceAll('https://theleaksbay.com/wp-content/plugins','/wp-content/plugins')
     res.send({
