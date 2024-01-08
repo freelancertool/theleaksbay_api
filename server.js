@@ -18,21 +18,21 @@ app.get('/', async function (req, res) {
     let body = root.querySelector('body')
 
     if(param == null || param == ''){
-        let listP = body.querySelectorAll('.elementor-widget-container p')
-        for(let p of listP){
-            console.log(p.innerHTML)
-            console.log(p.innerHTML.toString().indexOf('Welcome to TheLeaksBay.com, probably the safest and best place to find if you are looking for'))
-            if(p.innerHTML.toString().indexOf('Welcome to TheLeaksBay.com, probably the safest and best place to find if you are looking for') > -1){
-                p.innerHTML = "Because the number of visitors is too large, my server cannot handle streaming. Onlyfan idols will have a button to download the FULL VIDEO version to their computer to watch. Have fun bro"
-                console.log(p.innerText)
-            }else if(p.innerHTML.toString().indexOf('Tired of viewing reddit leaks? Endless Telegram spam group or') > -1){
-                p.remove()
-            }else if(p.innerHTML.toString().indexOf('That is the reason why a group of buddies from Discord started') > -1){
-                p.remove()
-            }else if(p.innerHTML.toString().indexOf('Our website is not named TheLeaksBay for nothing! We share only ') > -1){
-                p.remove()
-            }
-        }
+        let divToRemove = body.querySelector('div[data-element_type="container"]')
+        // console.log(divToRemove.innerHTML)
+        divToRemove.remove()
+        // let listP = body.querySelectorAll('.elementor-widget-container p')
+        // for(let p of listP){
+        //     if(p.innerHTML.toString().indexOf('Welcome to TheLeaksBay.com, probably the safest and best place to find if you are looking for') > -1){
+        //         p.innerHTML = "Because the number of visitors is too large, my server cannot handle streaming. Onlyfan idols will have a button to download the FULL VIDEO version to their computer to watch. Have fun bro"
+        //     }else if(p.innerHTML.toString().indexOf('Tired of viewing reddit leaks? Endless Telegram spam group or') > -1){
+        //         p.remove()
+        //     }else if(p.innerHTML.toString().indexOf('That is the reason why a group of buddies from Discord started') > -1){
+        //         p.remove()
+        //     }else if(p.innerHTML.toString().indexOf('Our website is not named TheLeaksBay for nothing! We share only ') > -1){
+        //         p.remove()
+        //     }
+        // }
     }
     let listImg = body.querySelectorAll('img')
     for(let img of listImg){
@@ -47,6 +47,9 @@ app.get('/', async function (req, res) {
     for(let a of listAnchor){
         // console.log(a.getAttribute('href'))
         let href = a.getAttribute('href')
+        let target = a.getAttribute('target')
+        a.removeAttribute('target')
+        console.log(target)
         if(href !== undefined){
             if(href.lastIndexOf('/') === href.length - 1){
                 href = href.substring(0,href.length - 1)
@@ -82,21 +85,18 @@ app.get('/', async function (req, res) {
         buttonDownload = body.querySelector('a.becomevip')
     }
     if(buttonDownload !== undefined && buttonDownload !== null){
-        console.log(buttonDownload.getAttribute('href') )
-        console.log(buttonDownload.text)
+
         if (buttonDownload.getAttribute('href') !== undefined){
-            buttonDownload.setAttribute('href','https://therabbit.org/Onlyfans%20Leaks%20Nudeis%20And%20Nudes%20Full%20Package.rar')
-            buttonDownload.innerHTML = "CLICK TO DOWNLOAD VIDEOS & PICS <br/> <strong><i>Password: 123</i></strong>"
+            buttonDownload.setAttribute('href','https://therabbit.org/Onlyfans%20Leaked%20Full%20Pic%20And%20video%20Public%20Fuck%20of%20Her.rar')
+            buttonDownload.innerHTML = "CLICK TO DOWNLOAD FULL VIDEOS & PICS"
         }
-        console.log(buttonDownload.text)
     }
     let textDownload = body.querySelector('h2[id^="click-play-button-above-to-see-preview"]')
 
     if(textDownload !== undefined && textDownload !== null){
 
-        console.log(textDownload.text)
         textDownload.innerHTML = "CLICK DOWNLOAD BUTTON TO WATCH FULL VERSION"
-        console.log(textDownload.text)
+
     }
     let strReturn = body.toString().replaceAll('https://theleaksbay.com/wp-content/plugins','/wp-content/plugins')
     res.send({
